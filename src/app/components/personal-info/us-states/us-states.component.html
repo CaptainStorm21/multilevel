@@ -1,0 +1,14 @@
+<section>
+    <div class="row">
+        <div class="col">
+            <mat-form-field>
+                <mat-label>State</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let state of states" [value]="state.value" required placeholder="State*">
+                        {{state.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</section>

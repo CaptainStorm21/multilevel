@@ -7,7 +7,6 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./registration-step3.component.css']
 })
 export class RegistrationStep3Component implements OnInit {
-
   constructor() { }
 
   @Input() regForm: FormGroup;

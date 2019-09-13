@@ -1,60 +1,64 @@
-<div id="registration" class="conatiner col-md-12">
-  <form id="regForm" [formGroup]="registrationForm">
-    <mat-horizontal-stepper #stepper linear>
+<div class="lightgrey">
+  <div id="registration" class="shell">
+    <form id="regForm" [formGroup]="registrationForm">
+      <mat-horizontal-stepper #stepper linear>
+        <mat-step formGroupName="personalDetails" [stepControl]="registrationForm.get('personalDetails')">
+          <ng-template matStepLabel>Personal</ng-template>
+          <!--accordion-->
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                 <span><mat-icon>account_circle</mat-icon> <h4>Personal Information</h4></span> 
+                </mat-panel-title>
 
-      <mat-step formGroupName="personalDetails" [stepControl]="registrationForm.get('personalDetails')">
-        <ng-template matStepLabel>Enter Personal Details</ng-template>
+              </mat-expansion-panel-header>
+              <!--personal info root-->
+              <app-full-name [regForm]="registrationForm"></app-full-name>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon>account_circle</mat-icon> Occupation Information
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <!--occupation-->
+              <!-- <app-occupation [regForm]="registrationForm"></app-occupation> -->
+              <app-occupation></app-occupation>
+            </mat-expansion-panel>
 
-        <mat-accordion>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                  <mat-icon>account_circle</mat-icon> Personal data
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <app-full-name [regForm]="registrationForm"></app-full-name>
+            <!--RESIDENCE-->
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon>account_circle</mat-icon> Residence Information
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <!--residence-->
+              <app-residence></app-residence>
+            </mat-expansion-panel>
+          </mat-accordion>
 
+        </mat-step>
+        <mat-step formGroupName="contactDetails" [stepControl]="registrationForm.get('contactDetails')">
+          <ng-template matStepLabel>Solutions</ng-template>
+          <app-registration-step2 [regForm]="registrationForm"></app-registration-step2>
+        </mat-step>
 
-
-
-          </mat-expansion-panel>
-          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header color="primary">
-              <mat-panel-title>
-                Occupation Information
-              </mat-panel-title>
-              <mat-panel-description>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-          </mat-expansion-panel>
-          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Residence Information
-              </mat-panel-title>
-              <mat-panel-description>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-          </mat-expansion-panel>
-        </mat-accordion>
-
-
-        <!-- <app-registration-step1 [regForm]="registrationForm"></app-registration-step1> -->
-        <!-- <app-full-name [regForm]="registrationForm"></app-full-name> -->
-      </mat-step>
-
-      <mat-step formGroupName="contactDetails" [stepControl]="registrationForm.get('contactDetails')">
-        <ng-template matStepLabel>Enter Contact Details</ng-template>
-        <app-registration-step2 [regForm]="registrationForm"></app-registration-step2>
-      </mat-step>
-
-
-
-
-      <mat-step>
-        <ng-template matStepLabel>Confirm Details</ng-template>
-        <app-registration-step3 [regForm]="registrationForm"></app-registration-step3>
-      </mat-step>
-    </mat-horizontal-stepper>
-  </form>
+        <!----->
+        <mat-step formGroupName="contactDetails" [stepControl]="registrationForm.get('contactDetails')">
+          <ng-template matStepLabel>Funding</ng-template>
+          <app-registration-step2 [regForm]="registrationForm"></app-registration-step2>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Review</ng-template>
+          <app-registration-step3 [regForm]="registrationForm"></app-registration-step3>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Identity</ng-template>
+          <app-registration-step3 [regForm]="registrationForm"></app-registration-step3>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </form>
+  </div>
 </div>
