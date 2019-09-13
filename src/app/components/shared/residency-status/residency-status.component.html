@@ -1,0 +1,14 @@
+<section>
+    <div class="row">
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Residency Status</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let status of residency_status" [value]="status.value" required >
+                        {{status.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</section>

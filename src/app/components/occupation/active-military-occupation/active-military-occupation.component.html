@@ -1,0 +1,35 @@
+<section>
+    <div class="row">
+        <div class="col">
+            <!-- branch of service-->
+            <mat-form-field>
+                <mat-label>Brach of Service</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let military of military_branches" [value]="military.value">
+                        {{military.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!-- MOS-->
+    <div class="row">
+        <div class="col">
+            <mat-form-field>
+                <input matInput placeholder="MOS" required>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!-- Enlistment Date -->
+    <div class="row">
+        <div class="col">
+            <mat-form-field>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Enlistment Date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+</section>

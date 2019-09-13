@@ -1,0 +1,45 @@
+<div id="personal-details" [formGroup]="regForm">
+
+  <div class="row">
+    <mat-form-field formGroupName="personalDetails">
+      <input matInput placeholder="First Name" formControlName="firstname" required>
+    </mat-form-field>
+
+    <mat-form-field formGroupName="personalDetails">
+      <input matInput placeholder="Middle Name" formControlName="middlename">
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field formGroupName="personalDetails">
+      <input matInput placeholder="Last Name" formControlName="lastname" required>
+    </mat-form-field>
+
+
+    <mat-form-field formGroupName="personalDetails">
+      <mat-select formControlName="suffix" placeholder="Suffix">
+        <mat-option *ngFor="let suffix of suffixes" [value]="suffixes">
+          {{suffix.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <app-mother-maiden-name [regForm]="registrationForm"></app-mother-maiden-name>
+    <app-socialsecurity [regForm]="registrationForm"></app-socialsecurity>
+    <app-birthdate [regForm]="registrationForm"></app-birthdate>
+  </div>
+  <div class="row">
+    <app-email [regForm]="registrationForm"></app-email>
+  </div>
+  <div class="row">
+    <app-mother-maiden-name [regForm]="registrationForm"></app-mother-maiden-name>
+  </div>
+  <div class="row">
+        <app-identification></app-identification>
+    </div>
+  
+</div>
+
+
+<button type="button" matStepperNext (click)="step1Submitted()">Next</button>

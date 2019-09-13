@@ -1,0 +1,7 @@
+     <div id="personal-details" [formGroup]="regForm">
+                <mat-form-field formGroupName="personalDetails">
+                    <input matInput [matDatepicker]="picker" placeholder="Pick your birthdate" [max]="maxData" formControlName="birthdate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+    </div>

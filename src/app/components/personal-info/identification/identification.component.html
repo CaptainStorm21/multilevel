@@ -1,0 +1,30 @@
+<section>
+    <div class="row">
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Features</mat-label>
+                <mat-select [(ngModel)]="id_type">
+                    <mat-option *ngFor="let feature of id_components" [value]="feature">
+                        {{feature.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</section>
+
+<div [ngSwitch]="id_type.id" class="grey">
+    <p *ngSwitchCase="1">
+      <app-driver-license></app-driver-license>
+    </p>
+    <p *ngSwitchCase="2">
+        <app-military-id></app-military-id>
+    </p>
+    <p *ngSwitchCase="3">
+        <app-us-passport></app-us-passport>
+    </p>
+    <p *ngSwitchCase="4">
+        <app-state-id></app-state-id>
+    </p>
+    <p *ngSwitchDefault> </p>
+</div>

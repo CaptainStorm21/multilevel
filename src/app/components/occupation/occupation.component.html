@@ -1,0 +1,49 @@
+<section>
+    <div class="row">
+        <div class="col">
+            <p>
+                You’re cruising along. Next, please tell us what you do.
+            </p>
+            <p>
+                Select “Student” even if you attend school part-time. This includes but is not limited to high school, college, and vocational schools.
+            </p>
+        </div>
+    </div>
+</section>
+<!--occupation dropdown-->
+<section>
+    <div class="row">
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Occupation</mat-label>
+                <mat-select [(ngModel)]="occup">
+                    <mat-option *ngFor="let feature of occupations" [value]="feature" >
+                        {{feature.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</section>
+
+<div [ngSwitch]="occup.id" class="grey">
+    <p *ngSwitchCase="1">
+        <app-student-occupation></app-student-occupation>
+    </p>
+    <p *ngSwitchCase="2">
+        <app-employed-occupation></app-employed-occupation>
+    </p>
+    <p *ngSwitchCase="3">
+       <app-self-employed-occupation></app-self-employed-occupation>
+    </p>
+    <p *ngSwitchCase="4">
+        <app-active-military-occupation></app-active-military-occupation>
+    </p>
+    <p *ngSwitchCase="5">
+        <app-unemployed-occupation></app-unemployed-occupation>
+    </p>
+    <p *ngSwitchCase="6">
+        <app-retired-occupation></app-retired-occupation>
+    </p>
+    <p *ngSwitchDefault> </p>
+</div>
